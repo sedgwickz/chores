@@ -109,20 +109,20 @@ pings=""
 for url in ${test_nodes[@]}; do
     region_name=${url%:*}
     region_url=${url##*:}
-    text="$(ping -t 3 -c 3 ${region_url}; echo $?)"
-    if [[ "${text}" == "68" ]]; then
+    text=$(ping -t 3 -c 3 ${region_url}; echo $?)
+    status_code=$(echo ${text} | awk -F " " '{print $(NF)}' )
+    if [[ $status_code == 68 ]]; then
         echo ${region_name} ${region_url} "无法解析"
         continue
-    fi
-    ping_result=$(echo ${text} | tail -n 1)
-    result="${region_name} ${region_url} $(echo ${ping_result##*min/avg/max/} | cut -d "/" -f 2) ms"
-    is_time_out=$(echo ${result} | grep -o " " | wc -l)
-    if [[ ${is_time_out} -gt 3 ]]; then
+    elif [[ $status_code == 2 ]]; then
         echo ${region_name} ${region_url} "请求超时"
-    else
-        pings+="${result}\n"
-        echo ${result}
+        continue
     fi
+    # echo "status_code " $status_code
+    time=$(echo ${text} | awk -F " " '{print $(NF - 2)}' | cut -d "/" -f 2)
+    result="${region_name} ${region_url} ${time} ms"
+    echo $result
+    pings+="${result}\n"
 done
 
 echo 
