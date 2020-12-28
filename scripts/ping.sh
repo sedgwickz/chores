@@ -109,7 +109,7 @@ pings=""
 for url in ${test_nodes[@]}; do
     region_name=${url%:*}
     region_url=${url##*:}
-    text=$(ping -t 3 -c 3 ${region_url}; echo $?)
+    text=$(ping -c 3 ${region_url}; echo $?)
     status_code=$(echo ${text} | awk -F " " '{print $(NF)}' )
     if [[ $status_code == 68 ]]; then
         echo ${region_name} ${region_url} "无法解析"
