@@ -7,3 +7,7 @@
 ```
 bash <(curl -s https://raw.githubusercontent.com/sedgwickz/chores/main/scripts/ping.sh)
 ```
+
+## License
+
+MIT
