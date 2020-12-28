@@ -115,7 +115,7 @@ for url in ${test_nodes[@]}; do
         continue
     fi
     ping_result=$(echo ${text} | tail -n 1)
-    result="${region_name} ${region_url} $(echo ${ping_result##*min/avg/max/stddev} | cut -d "/" -f 2) ms"
+    result="${region_name} ${region_url} $(echo ${ping_result##*min/avg/max/} | cut -d "/" -f 2) ms"
     is_time_out=$(echo ${result} | grep -o " " | wc -l)
     if [[ ${is_time_out} -gt 3 ]]; then
         echo ${region_name} ${region_url} "请求超时"
