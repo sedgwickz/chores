@@ -4,7 +4,9 @@
 
 ## 批量 ping 测试云服务器
 
-使用
+### 使用
+
+复制以下代码到终端自动执行
 
 ```
 bash <(curl -s https://raw.githubusercontent.com/sedgwickz/chores/main/scripts/ping.sh)
