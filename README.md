@@ -4,9 +4,15 @@
 
 ## 批量 ping 测试云服务器
 
+使用
+
 ```
 bash <(curl -s https://raw.githubusercontent.com/sedgwickz/chores/main/scripts/ping.sh)
 ```
+
+演示
+
+![demo1](assets/demo1.gif)
 
 ## License
 
