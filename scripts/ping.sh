@@ -2,8 +2,7 @@
 
 set -e
 
-Aliyun=(
-    # 谷歌:google.com
+Aliyun1=(
     杭州:oss-cn-hangzhou.aliyuncs.com
     上海:oss-cn-shanghai.aliyuncs.com
     青岛:oss-cn-qingdao.aliyuncs.com
@@ -13,6 +12,9 @@ Aliyun=(
     深圳:oss-cn-shenzhen.aliyuncs.com
     河源:oss-cn-heyuan.aliyuncs.com
     成都:oss-cn-chengdu.aliyuncs.com
+)
+
+Aliyun2=(
     香港:oss-us-west-1.aliyuncs.com
     弗吉尼亚:oss-us-east-1.aliyuncs.com
     新加坡:oss-ap-southeast-1.aliyuncs.com
@@ -24,6 +26,35 @@ Aliyun=(
     法兰克福:oss-eu-central-1.aliyuncs.com
     伦敦:oss-eu-west-1.aliyuncs.com
     迪拜:oss-me-east-1.aliyuncs.com
+)
+
+Aliyun=("${Aliyun1[@]} ${Aliyun2[@]}")
+
+Tecent=(
+    成都:cos.ap-chengdu.myqcloud.com
+    北京:cos.ap-beijing.myqcloud.com
+    上海:cos.ap-shanghai.myqcloud.com
+    广州:cos.ap-guangzhou.myqcloud.com
+    香港:cos.ap-hongkong.myqcloud.com
+    法兰克福:cos.eu-frankfurt.myqcloud.com
+    新加坡:cos.ap-singapore.myqcloud.com
+    首尔:cos.ap-seoul.myqcloud.com
+    多伦多:cos.na-toronto.myqcloud.com
+)
+
+Huawei=(
+    华东上海1:ecs.cn-east-3.myhuaweicloud.com
+    华东上海2:ecs.cn-east-2.myhuaweicloud.com
+    东北大连:ecs.cn-northeast-1.myhuaweicloud.com
+    北京4:ecs.cn-north-4.myhuaweicloud.com
+    北京1:ecs.cn-north-1.myhuaweicloud.com
+    贵阳1:ecs.cn-southwest-2.myhuaweicloud.com
+    华南广州:ecs.cn-south-1.myhuaweicloud.com
+    香港:ecs.ap-southeast-1.myhuaweicloud.com
+    新加坡:ecs.ap-southeast-3.myhuaweicloud.com
+    曼谷:ecs.ap-southeast-2.myhuaweicloud.com
+    南非-约翰内斯堡:ecs.af-south-1.myhuaweicloud.com
+    欧洲巴黎:ecs.eu-west-0.myhuaweicloud.com
 )
 
 Vultr=(
@@ -71,28 +102,52 @@ DigitalOcean=(
 
 test_nodes=()
 echo '-----------------------------------------------------------'
-options=( 1.所有云服务器 2.阿里云 3.Vultr 4.Linode 5.DigitalOcean 6.Quit )
+echo
+echo '要想确认节点精确地理信息可以使用curl -L ipaddr.vercel.app/api/[ip/域名]'
+echo
+echo '本程序原理：一个节点ping三次取均值'
+echo '对其他节点有需要可以在本项目页面提issue'
+echo '-----------------------------------------------------------'
+options=( 
+    "1.所有云服务器(默认)" 
+     2.阿里云 
+     3.仅阿里云海外节点 
+     4.腾讯云 
+     5.Vultr 
+     6.Linode 
+     7.DigitalOcean 
+     8.华为云 
+     0.Quit )
 for op in ${options[@]}; do
     echo -e "${op}"
 done
 read -p '请选择你要测试的云服务器(default: 1):' input
 case $input in
     1)
-        test_nodes=("${Aliyun[@]}" "${Vultr[@]}" "${Linode[@]}" "${DigitalOcean[@]}")        
+        test_nodes=("${Aliyun[@]}" "${Tencent[@]}" "${Vultr[@]}" "${Linode[@]}" "${DigitalOcean[@]}" "${Huawei[@]}")        
         ;;
     2)
         test_nodes=${Aliyun[@]}  
         ;;
     3)
-        test_nodes=${Vultr[@]}  
+        test_nodes=${Aliyun2[@]}  
         ;;
     4)
-        test_nodes=${Linode[@]}  
+        test_nodes=${Tecent[@]}
         ;;
     5)
-        test_nodes=${DigitalOcean[@]}  
+        test_nodes=${Vultr[@]}  
         ;;
     6)
+        test_nodes=${Linode[@]}  
+        ;;
+    7)
+        test_nodes=${DigitalOcean[@]}  
+        ;;
+    8)
+        test_nodes=${Huawei[@]}  
+        ;;
+    0)
         exit 1
         ;;
     7)
