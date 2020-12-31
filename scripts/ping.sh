@@ -32,13 +32,19 @@ Aliyun=("${Aliyun1[@]} ${Aliyun2[@]}")
 
 Tecent=(
     成都:cos.ap-chengdu.myqcloud.com
+    重庆:cos.ap-chongqing.myqcloud.com
     北京:cos.ap-beijing.myqcloud.com
     上海:cos.ap-shanghai.myqcloud.com
     广州:cos.ap-guangzhou.myqcloud.com
     香港:cos.ap-hongkong.myqcloud.com
     法兰克福:cos.eu-frankfurt.myqcloud.com
     新加坡:cos.ap-singapore.myqcloud.com
+    硅谷:cos.na-siliconvalley.myqcloud.com
+    弗吉尼亚:cos.na-ashburn.myqcloud.com
     首尔:cos.ap-seoul.myqcloud.com
+    孟买:cos.ap-mumbai.myqcloud.com
+    曼谷:cos.ap-bangkok.myqcloud.com
+    莫斯科:cos.eu-moscow.myqcloud.com
     多伦多:cos.na-toronto.myqcloud.com
 )
 
