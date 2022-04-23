@@ -21,7 +21,7 @@
 复制以下代码到终端自动执行
 
 ```
-bash <(curl -s https://raw.githubusercontent.com/sedgwickz/chores/main/scripts/ping.sh)
+bash <(curl -sL ping.nuk.one)
 ```
 
 演示
