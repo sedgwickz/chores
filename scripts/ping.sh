@@ -22,6 +22,7 @@ Aliyun2=(
     吉隆坡:oss-ap-southeast-3.aliyuncs.com
     雅加达:oss-ap-southeast-5.aliyuncs.com
     东京:oss-ap-northeast-1.aliyuncs.com
+    首尔:oss-ap-northeast-2.aliyuncs.com
     孟买:oss-ap-south-1.aliyuncs.com
     法兰克福:oss-eu-central-1.aliyuncs.com
     伦敦:oss-eu-west-1.aliyuncs.com
