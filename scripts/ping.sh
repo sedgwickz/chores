@@ -183,7 +183,7 @@ for url in ${test_nodes[@]}; do
     # echo "status_code " $status_code
     time=$(echo ${text} | awk -F " " '{print $(NF - 2)}' | cut -d "/" -f 2)
     # result="${region_name} ${region_url} ${time} ms"
-    printf "%-15s %s %10s ms" ${region_name} ${region_url} ${time}
+    printf "%s \t %s %.2f ms" ${region_name} ${region_url} ${time}
     echo $result
     pings+="${result}\n"
 done
