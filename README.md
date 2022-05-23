@@ -22,6 +22,10 @@
 
 ```
 bash <(curl -sL ping.nuk.one)
+
+or 
+
+bash <(wget -O - ping.nuk.one)
 ```
 
 演示
